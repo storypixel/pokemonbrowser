@@ -26,14 +26,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerview.adapter = adapter
 
-        viewModel.movieList.observe(this, Observer {
+        viewModel.cardList.observe(this, Observer {
             Log.d(TAG, "onCreate: $it")
-            adapter.setMovieList(it)
+            adapter.setCardList(it)
         })
 
         viewModel.errorMessage.observe(this, Observer {
 
+            Log.d(TAG, "onError")
         })
-        viewModel.getAllMovies()
+        viewModel.getAllCards()
     }
 }

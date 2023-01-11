@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@tools:sample/full_names"
-        android:background="#E1303F9F"
+        android:background="#E18C8C8C"
         android:paddingStart="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
