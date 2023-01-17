@@ -3,6 +3,8 @@ package com.iamnotsam.pokemonbrowser
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.iamnotsam.pokemonbrowser.pojo.Card
+import com.iamnotsam.pokemonbrowser.pojo.CardResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,13 +17,12 @@ class MainViewModel constructor(private val repository: MainRepository)  : ViewM
     fun getAllCards() {
 
         val response = repository.getAllCards()
-        response.enqueue(object : Callback<List<Card>> {
-            override fun onResponse(call: Call<List<Card>>, response: Response<List<Card>>) {
-                Log.d("BLAH", response.body().toString())
-                cardList.postValue(response.body())
+        response.enqueue(object : Callback<CardResponse> {
+            override fun onResponse(call: Call<CardResponse>, response: Response<CardResponse>) {
+                cardList.postValue(response.body()?.data!!)
             }
 
-            override fun onFailure(call: Call<List<Card>>, t: Throwable) {
+            override fun onFailure(call: Call<CardResponse>, t: Throwable) {
                 errorMessage.postValue(t.message)
             }
         })
