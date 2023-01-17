@@ -25,9 +25,8 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val card = cards[position]
-       holder.binding.name.text = card.name
-//        Glide.with(holder.itemView.context).load(card.images["small"]).into(holder.binding.imageview)
-
+        holder.binding.name.text = card.name
+        Glide.with(holder.itemView.context).load(card.images.large).into(holder.binding.imageview)
     }
 
     override fun getItemCount(): Int {
@@ -36,5 +35,5 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
 }
 
 class MainViewHolder(val binding: AdapterCardBinding) : RecyclerView.ViewHolder(binding.root) {
-
+    // how can i assign number of columns dynamically? Depending on orientation?
 }
